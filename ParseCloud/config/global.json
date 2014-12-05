@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "DryDock": {
+            "applicationId": "E1CxsBTDn2wWsVucf77sgP7Gt42r7hxPtEykEUXV", 
+            "masterKey": "TF68W406Z1NbhvTQQXxdbkp32NvNlpc9L3xuhW3B"
+        }, 
+        "_default": {
+            "link": "DryDock"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.2"
+    }
+}
