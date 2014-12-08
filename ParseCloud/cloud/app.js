@@ -26,11 +26,15 @@ app.get('/track/:channel', function(req, res) {
   });
 });
 
+app.get('/appdownload', function(req, res) {
+  return res.render('appdownloadERROR');
+});
+
 app.get('/appdownload/:objectId', function(req, res) {
   var modelAppQuery = new Parse.Query(VDDModelApp);
   modelAppQuery.get(req.params.objectId).then(function(modelApp) {
     if (!modelApp) {
-      
+      return res.render('appdownloadERROR');
     } else {
       var renderPackage = {};
       renderPackage['name'] = modelApp.get('name');

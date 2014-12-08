@@ -21,28 +21,12 @@
 
     <!-- Make sure all your bars are the first things in your <body> -->
     <header class="bar bar-nav">
-      <h1 class="title"><%= name %></h1>
+      <h1 class="title">DryDock</h1>
     </header>
 
     <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
     <div class="content">
-      <ul class="table-view">
-        <li class="table-view-cell media">
-          <a class="navigate-right" href="<%= install_url %>">
-            <img class="media-object pull-left" src="<%= icon_url %>">
-            <div class="media-body">
-              <%= name %>
-              <p>
-                <em><%= version_number %></em>
-              </p>
-              <p>
-                <%= description %>
-              </p>
-            </div>
-          </a>
-        </li>
-      </ul>
-      <p class="content-padded">Thanks for downloading <%= name %>! Click above to install the app.</p>
+      <h3 class="content-padded">Oh no! We couldn't find that app. Sorry :/.</h2>
     </div>
 
   </body>
