@@ -9,7 +9,6 @@ cibuild/*
 *.xccheckout
 
 /VenmoDryDock.xcworkspace/xcuserdata/chris.xcuserdatad/UserInterfaceState.xcuserstate
-VenmoDryDock/VDDConstants.h
 
 # Xcode
 #
