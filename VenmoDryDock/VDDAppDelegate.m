@@ -23,6 +23,7 @@
 #import "VDDAppDelegate.h"
 #import <VENVersionTracker/VENVersionTracker.h>
 #import "VDDConstants.h"
+#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
 
 @implementation VDDAppDelegate
 
@@ -37,29 +38,41 @@
 
 
 - (void)startTrackingVersion {
-    // For details on using VENVersionTracker see -- https://github.com/venmo/VENVersionTracker
-    /*
-     The URL http://YOUR_BASE_URL/track/YOUR_CHANNEL_NAME should return the following JSON:
-
-     {
-        "version":{
-            "number":"0.1.0",
-            "mandatory":false,
-            "install_url":"<<ITMS INSTALL URL>>"
-        },
-        "min-version-number":0.1.0
-     }
-     */
     [VENVersionTracker beginTrackingVersionForChannel:VDDChannelName
                                        serviceBaseUrl:VDDBaseUrl
                                          timeInterval:1800
                                           withHandler:^(VENVersionTrackerState state, VENVersion *version) {
                                               dispatch_sync(dispatch_get_main_queue(), ^{
                                                   if (state == VENVersionTrackerStateDeprecated || state == VENVersionTrackerStateOutdated) {
-                                                      [version install];
+                                                      [self promptInstallForVersion:version];
                                                   }
                                               });
                                           }];
+}
+
+- (void)promptInstallForVersion:(VENVersion *)version {
+    if ([UIAlertController class]) {
+        UIAlertController *alert= [UIAlertController alertControllerWithTitle:NSLocalizedString(@"New version available", nil)
+                                                                      message:NSLocalizedString(@"Please install the latest version of DryDock", nil)
+                                                               preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *install = [UIAlertAction actionWithTitle:NSLocalizedString(@"Install", nil)
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * action) {
+                                                            [version install];
+                                                   }];
+        
+        [alert addAction:install];
+        
+        [self.window.rootViewController presentViewController:alert
+                                                     animated:YES
+                                                   completion:nil];
+        
+    } else {
+        [UIAlertView showWithTitle:NSLocalizedString(@"New version available", nil) message:NSLocalizedString(@"Please install the latest version of DryDock", nil) cancelButtonTitle:nil otherButtonTitles:@[NSLocalizedString(@"Install", nil)] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            
+        }];
+    }
 }
 
 @end
