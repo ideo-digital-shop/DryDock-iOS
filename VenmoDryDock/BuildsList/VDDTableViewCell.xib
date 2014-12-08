@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6221" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,27 +15,31 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="VenmoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="m6U-t8-R59">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VenmoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="m6U-t8-R59">
                         <rect key="frame" x="10" y="9" width="64" height="64"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="64" id="THh-iO-CdW"/>
+                            <constraint firstAttribute="width" constant="64" id="ugU-Zz-EQY"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dogfood" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.70000000000000018" translatesAutoresizingMaskIntoConstraints="NO" id="R7S-Sn-xoX">
                         <rect key="frame" x="87" y="12" width="119" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weekly Internal Builds" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="119" translatesAutoresizingMaskIntoConstraints="NO" id="VMI-Ce-JZS">
                         <rect key="frame" x="87" y="34" width="119" height="38"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                         <color key="textColor" red="0.60784313729999995" green="0.60392156860000001" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuR-BK-J6V" customClass="DCTConfirmationButton">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuR-BK-J6V" customClass="DCTConfirmationButton">
                         <rect key="frame" x="200" y="12" width="100" height="26"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="QAs-Dy-pD2"/>
+                            <constraint firstAttribute="height" constant="26" id="yeQ-II-qre"/>
+                        </constraints>
                         <state key="normal" title="Button">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -42,9 +47,12 @@
                             <action selector="installApp:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Nvs-9p-DZQ"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49h-tD-kuZ" customClass="DCTConfirmationButton">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49h-tD-kuZ" customClass="DCTConfirmationButton">
                         <rect key="frame" x="200" y="46" width="100" height="26"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="26" id="LGu-DD-I72"/>
+                            <constraint firstAttribute="width" constant="100" id="YU0-xI-ER7"/>
+                        </constraints>
                         <state key="normal" title="Share">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -53,6 +61,17 @@
                         </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="49h-tD-kuZ" firstAttribute="top" secondItem="LuR-BK-J6V" secondAttribute="bottom" constant="8" id="2h1-jB-wpe"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="m6U-t8-R59" secondAttribute="bottom" constant="2" id="CNN-QT-oZ6"/>
+                    <constraint firstItem="m6U-t8-R59" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="1" id="Z9f-w0-hZJ"/>
+                    <constraint firstItem="LuR-BK-J6V" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="gEU-hR-jWj"/>
+                    <constraint firstItem="49h-tD-kuZ" firstAttribute="top" secondItem="LuR-BK-J6V" secondAttribute="bottom" constant="8" id="h3K-Y3-Sgv"/>
+                    <constraint firstItem="m6U-t8-R59" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="h7x-zC-xcz"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="LuR-BK-J6V" secondAttribute="trailing" constant="12" id="iUY-ow-pgh"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="49h-tD-kuZ" secondAttribute="bottom" constant="3" id="jkV-UW-sJ9"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="49h-tD-kuZ" secondAttribute="trailing" constant="12" id="nZt-FV-Vqr"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="appDescriptionLabel" destination="VMI-Ce-JZS" id="0al-CU-4hk"/>
@@ -66,4 +85,9 @@
     <resources>
         <image name="VenmoIcon" width="60" height="60"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>
