@@ -24,13 +24,17 @@
 #import <VENVersionTracker/VENVersionTracker.h>
 #import "VDDConstants.h"
 #import <UIAlertView+Blocks/UIAlertView+Blocks.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 @implementation VDDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [Fabric with:@[CrashlyticsKit]];
     [Parse setApplicationId:VDDParseAppId
                   clientKey:VDDParseClientKey];
-    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     [self startTrackingVersion];
     
     return YES;
