@@ -276,6 +276,7 @@
 				83FC5C3E18D4B8A1005A3B3E /* Resources */,
 				FE34DC2EDB9D41718C7B0D87 /* Copy Pods Resources */,
 				4BBA71E21A3672F1006D63B3 /* ShellScript */,
+				4BEA07CB1A3A21D80099A358 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -379,6 +380,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 80ccac0407902f9055db8c37d04408bad7cee53c 812f8b354d91265c8d3432a8ffd5200c0a6890f4b2c9cd3d01e11f745b61c204";
+		};
+		4BEA07CB1A3A21D80099A358 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "git=`sh /etc/profile; which git`\nappBuild=`\"$git\" rev-list --all |wc -l`\nif [ $CONFIGURATION = \"Debug\" ]; then\nbranchName=`\"$git\" rev-parse --abbrev-ref HEAD`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild-$branchName\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nelse\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $appBuild\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nfi\necho \"Updated ${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"";
 		};
 		5046B7D8ACE54D78890E8B28 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
