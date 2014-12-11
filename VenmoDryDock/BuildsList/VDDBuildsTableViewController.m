@@ -147,7 +147,7 @@
     if (oldIndexPath && ![oldIndexPath isEqual:indexPath]) {
         [indexPathsToReload addObject:oldIndexPath];
     }
-    [self.tableView reloadRowsAtIndexPaths:indexPathsToReload withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView reloadRowsAtIndexPaths:indexPathsToReload withRowAnimation:UITableViewRowAnimationNone];
 }
 
 @end

@@ -57,6 +57,10 @@ const CGFloat VDDDetailsLabelWidth = 290;
     [self.contentView addSubview:self.appDetailsLabel];
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    self.appIconView.image = nil;
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -69,16 +73,21 @@ const CGFloat VDDDetailsLabelWidth = 290;
     self.appNameLabel.text = app[VDDAppKeyName];
     self.appDescriptionLabel.text = app[VDDAppKeyDescription];
 
-    self.appIconView.image = [UIImage imageNamed:@"VenmoIcon"];
     
     [self configureDetailsLabel];
     
     PFFile *image = app[VDDAppKeyImage];
-    [image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        if (data) {
-            self.appIconView.image = [UIImage imageWithData:data];
-        }
-    }];
+    if (image) {
+        [image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (data) {
+                self.appIconView.image = [UIImage imageWithData:data];
+            } else {
+                self.appIconView.image = [UIImage imageNamed:@"VenmoIcon"];
+            }
+        }];
+    } else {
+        self.appIconView.image = [UIImage imageNamed:@"VenmoIcon"];
+    }
 }
 
 - (void)configureDetailsLabel {

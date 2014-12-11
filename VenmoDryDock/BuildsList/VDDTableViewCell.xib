@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VenmoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="m6U-t8-R59">
-                        <rect key="frame" x="10" y="9" width="64" height="64"/>
+                        <rect key="frame" x="8" y="8" width="64" height="64"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="64" id="THh-iO-CdW"/>
                             <constraint firstAttribute="width" constant="64" id="ugU-Zz-EQY"/>
@@ -63,11 +63,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="49h-tD-kuZ" firstAttribute="top" secondItem="LuR-BK-J6V" secondAttribute="bottom" constant="8" id="2h1-jB-wpe"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="m6U-t8-R59" secondAttribute="bottom" constant="2" id="CNN-QT-oZ6"/>
-                    <constraint firstItem="m6U-t8-R59" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="1" id="Z9f-w0-hZJ"/>
+                    <constraint firstItem="m6U-t8-R59" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Z9f-w0-hZJ"/>
                     <constraint firstItem="LuR-BK-J6V" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="gEU-hR-jWj"/>
                     <constraint firstItem="49h-tD-kuZ" firstAttribute="top" secondItem="LuR-BK-J6V" secondAttribute="bottom" constant="8" id="h3K-Y3-Sgv"/>
-                    <constraint firstItem="m6U-t8-R59" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="h7x-zC-xcz"/>
+                    <constraint firstItem="m6U-t8-R59" firstAttribute="left" secondItem="H2p-sc-9uM" secondAttribute="left" constant="8" id="h7x-zC-xcz"/>
                     <constraint firstAttribute="trailingMargin" secondItem="LuR-BK-J6V" secondAttribute="trailing" constant="12" id="iUY-ow-pgh"/>
                     <constraint firstAttribute="bottomMargin" secondItem="49h-tD-kuZ" secondAttribute="bottom" constant="3" id="jkV-UW-sJ9"/>
                     <constraint firstAttribute="trailingMargin" secondItem="49h-tD-kuZ" secondAttribute="trailing" constant="12" id="nZt-FV-Vqr"/>

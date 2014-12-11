@@ -13,7 +13,7 @@ var versionPackageForTrackerRequest = function(bundleIdentifier, channel) {
     } else {
       var returnPackage = {};
       var versionPackage = {};
-      versionPackage["number"] = modelApp.get("version_number");
+      versionPackage["number"] = modelApp.get("build_number");
       versionPackage["mandatory"] = modelApp.get("mandatory_update") || false;
       versionPackage["install_url"] = modelApp.get("install_url");
       returnPackage["version"] = versionPackage;
