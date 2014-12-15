@@ -57,6 +57,8 @@
     self.refreshControl = refreshControl;
     
     [self fetchApps];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchApps) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 
