@@ -94,7 +94,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"%@", error);
     [UIAlertView showWithTitle:@"push error" message:error.localizedDescription cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-        
+    
     }];
 }
 
@@ -109,7 +109,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {
     if ([userInfo[@"aps"][@"category"] isEqualToString:UpdateCategoryIdentifier] && [identifier isEqualToString:InstallActionIdentifier]) {
         NSString *installUrl = userInfo[@"install_url"];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:installUrl]];
+        self.urlToOpen = [NSURL URLWithString:installUrl];
         completionHandler();
     } else {
         completionHandler();

@@ -42,6 +42,8 @@ app.get('/appdownload/:objectId', function(req, res) {
       renderPackage['install_url'] = modelApp.get('install_url');
       if (modelApp.get('image')) {
         renderPackage['icon_url'] = modelApp.get('image').url();
+      } else {
+        renderPackage['icon_url'] = "http://files.parsetfss.com/8ea13206-bb1e-43a9-9351-a410a901ac61/tfss-cd12e48a-3526-4884-af28-c16986314992-DryDock_Icon120x120.png";
       }
       renderPackage['description'] = modelApp.get('description');
       return res.render('appdownload', renderPackage);

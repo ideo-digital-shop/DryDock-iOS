@@ -25,5 +25,6 @@
 @interface VDDAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) NSURL *urlToOpen;
 
 @end

@@ -22,6 +22,7 @@
 
 #import "VDDBuildsTableViewController.h"
 #import "VDDTableViewCell.h"
+#import "VDDAppDelegate.h"
 
 @interface VDDBuildsTableViewController ()
 
@@ -59,6 +60,16 @@
     [self fetchApps];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchApps) name:UIApplicationDidBecomeActiveNotification object:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    VDDAppDelegate *appDelegate = (VDDAppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (appDelegate.urlToOpen) {
+        NSURL *urlToOpen = appDelegate.urlToOpen;
+        appDelegate.urlToOpen = nil;
+        [[UIApplication sharedApplication] openURL:urlToOpen];
+    }
 }
 
 
