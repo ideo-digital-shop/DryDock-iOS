@@ -110,6 +110,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if ([userInfo[@"aps"][@"category"] isEqualToString:UpdateCategoryIdentifier] && [identifier isEqualToString:InstallActionIdentifier]) {
         NSString *installUrl = userInfo[@"install_url"];
         self.urlToOpen = [NSURL URLWithString:installUrl];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[UIApplication sharedApplication] openURL:self.urlToOpen];
+        });
         completionHandler();
     } else {
         completionHandler();

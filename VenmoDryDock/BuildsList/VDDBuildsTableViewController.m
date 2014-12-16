@@ -22,8 +22,6 @@
 
 #import "VDDBuildsTableViewController.h"
 #import "VDDTableViewCell.h"
-#import "VDDAppDelegate.h"
-#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
 
 @interface VDDBuildsTableViewController ()
 
@@ -65,15 +63,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    VDDAppDelegate *appDelegate = (VDDAppDelegate *)[[UIApplication sharedApplication] delegate];
-    if (appDelegate.urlToOpen) {
-        NSURL *urlToOpen = appDelegate.urlToOpen;
-        appDelegate.urlToOpen = nil;
-        [UIAlertView showWithTitle:@"install" message:[urlToOpen absoluteString] cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-            
-        }];
-        [[UIApplication sharedApplication] openURL:urlToOpen];
-    }
 }
 
 
