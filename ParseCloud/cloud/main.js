@@ -26,6 +26,15 @@ Parse.Cloud.define("buildServerUpdate", function(request, response) {
       return modelApp.save();
     }
   }).then(function(object) {
+    var pushData = {
+      data: {
+        alert: "New version available for " + modelApp.get("name") + "!",
+        sound: "default",
+        category: "update",
+        "install_url": install_url
+      }
+    };
+    return Parse.Push.send(pushData);
     return response.success(object);
   }, function(err) {
     return response.error(JSON.stringify(err));

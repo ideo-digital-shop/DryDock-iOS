@@ -29,6 +29,9 @@
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
+static NSString * const InstallActionIdentifier = @"InstallActionIdentifier";
+static NSString * const UpdateCategoryIdentifier = @"update";
+
 @implementation VDDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -38,7 +41,21 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     [self startTrackingVersion];
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-        UIUserNotificationSettings* requestedSettings = [UIUserNotificationSettings settingsForTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge categories:nil];
+        UIMutableUserNotificationAction *installAction = [UIMutableUserNotificationAction new];
+        installAction.identifier = InstallActionIdentifier;
+        installAction.title = NSLocalizedString(@"Install", nil);
+        installAction.activationMode = UIUserNotificationActivationModeForeground;
+        installAction.destructive = NO;
+        installAction.authenticationRequired = YES;
+        
+        UIMutableUserNotificationCategory *updateCategory = [UIMutableUserNotificationCategory new];
+        updateCategory.identifier = UpdateCategoryIdentifier;
+        [updateCategory setActions:@[installAction] forContext:UIUserNotificationActionContextDefault];
+        [updateCategory setActions:@[installAction] forContext:UIUserNotificationActionContextMinimal];
+        
+        NSSet *notificationCategories = [NSSet setWithObject:updateCategory];
+        UIUserNotificationSettings* requestedSettings = [UIUserNotificationSettings settingsForTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge
+                                                                                          categories:notificationCategories];
         [[UIApplication sharedApplication] registerUserNotificationSettings:requestedSettings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
         
@@ -54,6 +71,16 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {
+    if ([userInfo[@"aps"][@"category"] isEqualToString:UpdateCategoryIdentifier] && [identifier isEqualToString:InstallActionIdentifier]) {
+        NSString *installUrl = userInfo[@"install_url"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:installUrl]];
+        completionHandler();
+    } else {
+        completionHandler();
+    }
 }
 
 - (void)startTrackingVersion {
