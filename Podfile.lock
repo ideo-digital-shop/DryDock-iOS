@@ -1,16 +1,14 @@
 PODS:
-  - Bolts (1.1.0)
-  - Facebook-iOS-SDK (3.16.1):
-    - Bolts
+  - Bolts (1.1.3)
   - Kiwi (2.3.0)
-  - Parse (1.2.18):
-    - Facebook-iOS-SDK (~> 3.11)
+  - Parse (1.6.0):
+    - Bolts (~> 1.1.3)
   - UIAlertView+Blocks (0.8.1)
   - VENVersionTracker (0.1.1)
 
 DEPENDENCIES:
   - Kiwi (~> 2.3)
-  - Parse
+  - Parse (= 1.6)
   - UIAlertView+Blocks (~> 0.8)
   - VENVersionTracker (from `https://github.com/timgshi/VENVersionTracker.git`, branch `feature/include-bundle-id`)
 
@@ -25,10 +23,9 @@ CHECKOUT OPTIONS:
     :git: https://github.com/timgshi/VENVersionTracker.git
 
 SPEC CHECKSUMS:
-  Bolts: 91c2af8eae1d44e1dd75946a5b0ae04a43ea43e4
-  Facebook-iOS-SDK: 594f0e2398fe62b0a44b6f7ae113c7795cfabfa4
+  Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   Kiwi: 54bece5b35564d9b8e03c608d926f1a22fcfc589
-  Parse: a2017b8839185f110bd0bfff19c994abc024b4ac
+  Parse: f15dfacd941ee8084a5decbef486da8b223c2810
   UIAlertView+Blocks: 0b749f1f7bd5131ff2233b30a406c1585a7171b2
   VENVersionTracker: c17e85d347b5d895ef2fe16124f8f58eb4667ce5
 
