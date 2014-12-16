@@ -16,6 +16,7 @@ Parse.Cloud.define("buildServerUpdate", function(request, response) {
   var installUrl = request.params['install_url'];
   var versionNumber = request.params['version_number'];
   var buildNumber = request.params['build_number'];
+  var foundModelApp;
   getModelApp(bundleIdentifier, versionChannel).then(function(modelApp) {
     if (!modelApp) {
       return Parse.Promise.error("No model app found that matches bundleIdentifier: " + bundleIdentifier + " and channel: " + versionChannel);
@@ -26,16 +27,18 @@ Parse.Cloud.define("buildServerUpdate", function(request, response) {
       return modelApp.save();
     }
   }).then(function(object) {
+    foundModelApp = object;
     var pushData = {
       data: {
-        alert: "New version available for " + modelApp.get("name") + "!",
+        alert: "New version available for " + foundModelApp.get("name") + "!",
         sound: "default",
         category: "update",
-        "install_url": install_url
+        "install_url": installUrl
       }
     };
     return Parse.Push.send(pushData);
-    return response.success(object);
+  }).then(function() {
+    return response.success(foundModelApp);
   }, function(err) {
     return response.error(JSON.stringify(err));
   });
