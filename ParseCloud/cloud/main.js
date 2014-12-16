@@ -33,12 +33,13 @@ Parse.Cloud.define("buildServerUpdate", function(request, response) {
         alert: "New version available for " + foundModelApp.get("name") + "!",
         sound: "default",
         category: "update",
-        "install_url": installUrl,
-        channels: ["global"]
-      }
+        "install_url": installUrl
+      },
+      channels: ["global"]
     };
     return Parse.Push.send(pushData);
   }).then(function() {
+    console.log("sent push");
     return response.success(foundModelApp);
   }, function(err) {
     return response.error(JSON.stringify(err));
