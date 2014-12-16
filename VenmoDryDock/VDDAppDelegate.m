@@ -74,6 +74,9 @@ static NSString * const UpdateCategoryIdentifier = @"update";
             [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
         }
     }
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setChannels:@[@"global"]];
+    [currentInstallation saveInBackground];
     return YES;
 }
 

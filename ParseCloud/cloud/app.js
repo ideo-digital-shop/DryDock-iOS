@@ -40,7 +40,9 @@ app.get('/appdownload/:objectId', function(req, res) {
       renderPackage['name'] = modelApp.get('name');
       renderPackage['version_number'] = modelApp.get('version_number');
       renderPackage['install_url'] = modelApp.get('install_url');
-      renderPackage['icon_url'] = modelApp.get('image').url();
+      if (modelApp.get('image')) {
+        renderPackage['icon_url'] = modelApp.get('image').url();
+      }
       renderPackage['description'] = modelApp.get('description');
       return res.render('appdownload', renderPackage);
     }
