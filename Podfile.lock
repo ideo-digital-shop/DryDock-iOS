@@ -27,6 +27,6 @@ SPEC CHECKSUMS:
   Kiwi: 54bece5b35564d9b8e03c608d926f1a22fcfc589
   Parse: f15dfacd941ee8084a5decbef486da8b223c2810
   UIAlertView+Blocks: 0b749f1f7bd5131ff2233b30a406c1585a7171b2
-  VENVersionTracker: c17e85d347b5d895ef2fe16124f8f58eb4667ce5
+  VENVersionTracker: 8f3a372c35b4f301613b4e4fb83b4214f36af4df
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0.beta.1
